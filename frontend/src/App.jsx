@@ -220,7 +220,7 @@ function App() {
         const topic = customTopic.trim() || selectedTopic?.label
         if (!topic) { alert('Please select or type a topic!'); setLoading(false); return }
         topicName = topic
-        res = await fetch('http://localhost:3001/api/generate-quiz-topic', {
+        res = await fetch('https://quiz-maker-production-7dc9.up.railway.app/api/generate-quiz-topic', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ topic, numQuestions, difficulty })
@@ -228,7 +228,7 @@ function App() {
       } else {
         if (!text.trim()) { alert('Please paste some text or upload a PDF!'); setLoading(false); return }
         topicName = text.substring(0, 50) + '...'
-        res = await fetch('http://localhost:3001/api/generate-quiz', {
+        res = await fetch('https://quiz-maker-production-7dc9.up.railway.app/api/generate-quiz', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text, numQuestions, difficulty })
